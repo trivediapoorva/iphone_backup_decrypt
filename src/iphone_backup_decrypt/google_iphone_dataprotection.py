@@ -77,7 +77,7 @@ class Keybag:
             self.classKeys[currentClassKey[b"CLAS"]] = currentClassKey
 
     def unlockWithPassphrase(self, passphrase):
-         print(f"Attempting to unlock with passphrase: {passphrase}")
+        print(f"Attempting to unlock with passphrase: {passphrase}")
         passphrase_round1 = pbkdf2_hmac('sha256', passphrase, self.attrs[b"DPSL"], self.attrs[b"DPIC"], 32)
         passphrase_key = pbkdf2_hmac('sha1', passphrase_round1, self.attrs[b"SALT"], self.attrs[b"ITER"], 32)
         for classkey in self.classKeys.values():
